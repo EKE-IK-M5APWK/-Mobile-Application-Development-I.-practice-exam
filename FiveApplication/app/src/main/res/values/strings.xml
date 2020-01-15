@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FiveApplication</string>
+    <string name="b">B =</string>
+    <string name="a">A =</string>
+    <string name="ask_two_number">Adjon meg két számot</string>
+    <string name="a_value">\'A\' Értéke</string>
+    <string name="b_value">\'B\' Értéke</string>
+    <string name="plus_button">+</string>
+    <string name="minus_button">-</string>
+    <string name="multiplication_button">*</string>
+    <string name="textview_result">" "</string>
+    <string name="textview_multip">" "</string>
+    <string name="textview_sub">" "</string>
+    <string name="textview_sum">" "</string>
+    <string name="dial_button">DIAL</string>
+    <string name="next_button">NEXT</string>
+</resources>
