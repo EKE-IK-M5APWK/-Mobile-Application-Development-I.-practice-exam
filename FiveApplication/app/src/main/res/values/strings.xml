@@ -8,10 +8,9 @@
     <string name="plus_button">+</string>
     <string name="minus_button">-</string>
     <string name="multiplication_button">*</string>
-    <!--<string name="textview_result">" "</string>
-    <string name="textview_multip">" "</string>
-    <string name="textview_sub">" "</string>
-    <string name="textview_sum">" "</string>-->
     <string name="dial_button">DIAL</string>
     <string name="next_button">NEXT</string>
+    <string name="add">Az összeadás eredménye: </string>
+    <string name="withdraw">A kivonás eredménye: </string>
+    <string name="multiply">A szorzás eredménye:  </string>
 </resources>

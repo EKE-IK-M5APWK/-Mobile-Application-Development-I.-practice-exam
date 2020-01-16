@@ -3,6 +3,7 @@ package ai.kormanymilan.fiveapplication;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,10 @@ public class MainActivity extends AppCompatActivity{
     TextView  textViewA, textViewB;
     Button dialButton, multiplicationButton, summationButton, subtractionButton;
 
+    boolean myIsDigitsOnly(String str) {
+        if (str.isEmpty()) return false;
+        else return TextUtils.isDigitsOnly(str);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +33,12 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View arg0) {
-
-                int a = Integer.valueOf(textViewA.getText().toString());
-                int b = Integer.valueOf(textViewB.getText().toString());
-
-                int sum = (a + b);
+                int a = 0, b = 0;
+                if (myIsDigitsOnly(textViewA.getText().toString()))
+                    a = Integer.valueOf(textViewA.getText().toString());
+                if (myIsDigitsOnly(textViewB.getText().toString()))
+                    b = Integer.valueOf(textViewB.getText().toString());
+                int sum = a + b;
                 int number = 1;
 
                 Intent getSumIntent = new Intent(MainActivity.this, SecondActivity.class);
@@ -47,12 +53,14 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View arg0) {
-
-                int a = Integer.valueOf(textViewA.getText().toString());
-                int b = Integer.valueOf(textViewB.getText().toString());
+                int a = 0, b = 0;
+                if (myIsDigitsOnly(textViewA.getText().toString()))
+                    a = Integer.valueOf(textViewA.getText().toString());
+                if (myIsDigitsOnly(textViewB.getText().toString()))
+                    b = Integer.valueOf(textViewB.getText().toString());
 
                 int sub = (a - b);
-                int number = 3;
+                int number = 2;
 
                 Intent getSubIntent = new Intent(MainActivity.this, SecondActivity.class);
                 getSubIntent.putExtra("number", sub);
@@ -67,11 +75,14 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View arg0) {
 
-                int a = Integer.valueOf(textViewA.getText().toString());
-                int b = Integer.valueOf(textViewB.getText().toString());
+                int a = 0, b = 0;
+                if (myIsDigitsOnly(textViewA.getText().toString()))
+                    a = Integer.valueOf(textViewA.getText().toString());
+                if (myIsDigitsOnly(textViewB.getText().toString()))
+                    b = Integer.valueOf(textViewB.getText().toString());
 
                 int multip = (a * b);
-                int number = 2;
+                int number = 3;
 
                 Intent getMultipIntent = new Intent(MainActivity.this, SecondActivity.class);
                 getMultipIntent.putExtra("number", multip);

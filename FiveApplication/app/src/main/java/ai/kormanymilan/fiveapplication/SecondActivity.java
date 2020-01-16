@@ -1,52 +1,47 @@
 package ai.kormanymilan.fiveapplication;
 
-import android.nfc.Tag;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
-    TextView resultText;
-    TextView sumText, subText, multipText;
+    TextView resultText, summationText, subtractionTex, multiplicationText, textA, textB;
     Button nextButton;
-    TextView txtb, txta;
     private String TAG;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
         resultText = findViewById(R.id.textViewResultSecondActivity);
-
-        sumText = findViewById(R.id.textViewSumResultSecondActivity);
-        multipText = findViewById(R.id.textViewMultipResultSecondActivity);
-        subText = findViewById(R.id.textViewSubResultSecondActivity);
-
+        summationText = findViewById(R.id.textViewSumResultSecondActivity);
+        multiplicationText = findViewById(R.id.textViewMultipResultSecondActivity);
+        subtractionTex = findViewById(R.id.textViewSubResultSecondActivity);
         nextButton  = findViewById(R.id.buttonNextSecondActivity);
-        txta = findViewById(R.id.editTextAMainActivity);
-        txtb = findViewById(R.id.editTextBMainActivity);
-
+        textA = findViewById(R.id.editTextAMainActivity);
+        textB = findViewById(R.id.editTextBMainActivity);
         Intent intent = getIntent();
         final String result = String.valueOf(intent.getIntExtra("number", 0));
         resultText.setText(result);
 
-        int identifier = Integer.valueOf(intent.getIntExtra("identifier", 0));
-        if (identifier == 1) {
-            sumText.setText("Az összeadás eredménye: ");
+        int identifier = intent.getIntExtra("identifier", 0);
+        switch (identifier) {
+            case 1:
+                summationText.setText(getString(R.string.add));
+                break;
+            case 2:
+                multiplicationText.setText(getString(R.string.withdraw));
+                break;
+            case 3:
+                subtractionTex.setText(getString(R.string.multiply));
+                break;
         }
-        else if (identifier == 2) {
-            multipText.setText("A szorzás eredménye:  ");
-        }
-        else subText.setText("A kivonás eredménye: ");
-
         nextButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -58,10 +53,7 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intentNextButton);
             }
         });
-
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
