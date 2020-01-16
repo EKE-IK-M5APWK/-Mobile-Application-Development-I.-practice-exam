@@ -1,3 +1,7 @@
+Kapcsolódó Neptun üzenet:
+--------------------------------------------------------
+
+
 Tisztelt Hallgatók!
 
 Több megkeresését is kaptam a Mobilprogramozás I gyakorlat beadandó feladatával és határidejével kapcsolatban levelezős hallgatók részéről.
