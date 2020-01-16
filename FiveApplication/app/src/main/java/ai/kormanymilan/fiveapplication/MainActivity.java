@@ -1,56 +1,36 @@
 package ai.kormanymilan.fiveapplication;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity{
-    TextView txtb, txta;
-    Button btn, multibtn, sumbtn, subbtn;
+    TextView  textViewA, textViewB;
+    Button dialButton, multiplicationButton, summationButton, subtractionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textViewA = findViewById(R.id.editTextAMainActivity);
+        textViewB = findViewById(R.id.editTextBMainActivity);
+        dialButton = findViewById(R.id.buttonDialMainActivity);
+        summationButton = findViewById(R.id.buttonSumMainActivity);
+        multiplicationButton = findViewById(R.id.buttonMultipMainActivity);
+        subtractionButton = findViewById(R.id.buttonSubMainActivity);
 
-        txta = findViewById(R.id.editTextAMainActivity);
-        txtb = findViewById(R.id.editTextBMainActivity);
-        btn = findViewById(R.id.buttonDialMainActivity);
-        sumbtn = findViewById(R.id.buttonSumMainActivity);
-        multibtn = findViewById(R.id.buttonMultipMainActivity);
-        subbtn = findViewById(R.id.buttonSubMainActivity);
-
-        //Dial Action
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                String number = txtb.getText().toString();
-                Intent dialIntent = new Intent(Intent.ACTION_DIAL);
-                dialIntent.setData(Uri.parse("tel:" + number));
-                startActivity(dialIntent);
-            }
-        });
-
-        // --- SUM ---
-        sumbtn.setOnClickListener(new View.OnClickListener() {
+        summationButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                int a = Integer.valueOf(txta.getText().toString());
-                int b = Integer.valueOf(txtb.getText().toString());
+                int a = Integer.valueOf(textViewA.getText().toString());
+                int b = Integer.valueOf(textViewB.getText().toString());
 
                 int sum = (a + b);
                 int number = 1;
@@ -63,34 +43,13 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        // --- MULTIP ---
-        multibtn.setOnClickListener(new View.OnClickListener() {
+        subtractionButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                int a = Integer.valueOf(txta.getText().toString());
-                int b = Integer.valueOf(txtb.getText().toString());
-
-                int multip = (a * b);
-                int number = 2;
-
-                Intent getMultipIntent = new Intent(MainActivity.this, SecondActivity.class);
-                getMultipIntent.putExtra("number", multip);
-                getMultipIntent.putExtra("identifier", number);
-
-                startActivity(getMultipIntent);
-            }
-        });
-
-        // --- SUB ---
-        subbtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                int a = Integer.valueOf(txta.getText().toString());
-                int b = Integer.valueOf(txtb.getText().toString());
+                int a = Integer.valueOf(textViewA.getText().toString());
+                int b = Integer.valueOf(textViewB.getText().toString());
 
                 int sub = (a - b);
                 int number = 3;
@@ -103,9 +62,37 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        //Next aka BACK - intent catch
+        multiplicationButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                int a = Integer.valueOf(textViewA.getText().toString());
+                int b = Integer.valueOf(textViewB.getText().toString());
+
+                int multip = (a * b);
+                int number = 2;
+
+                Intent getMultipIntent = new Intent(MainActivity.this, SecondActivity.class);
+                getMultipIntent.putExtra("number", multip);
+                getMultipIntent.putExtra("identifier", number);
+
+                startActivity(getMultipIntent);
+            }
+        });
+        dialButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                String number = textViewB.getText().toString();
+                Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+                dialIntent.setData(Uri.parse("tel:" + number));
+                startActivity(dialIntent);
+            }
+        });
+
         Intent intent = getIntent();
         String result = intent.getStringExtra("result");
-        txta.setText(result);
+        textViewA.setText(result);
     }
 }
